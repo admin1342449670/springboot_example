@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<table>
+    <thead>
+    <tr>
+        <th>编号</th>
+        <th>名称</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="grade,status : ${grades}" >
+        <td th:style="${status.even?'color:red':''}" th:text="${status.index}"></td>
+        <td th:text="${grade.gradename}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<label th:text="${#dates.createNow()}"></label>
+
+<form method="POST" action="/grade/upload" enctype="multipart/form-data">
+    <input type="file" name="files" multiple="multiple"/><br/><br/>
+    <input type="submit" value="Submit"/>
+</form>
+</body>
+</html>
